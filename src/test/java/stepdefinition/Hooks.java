@@ -13,8 +13,8 @@ public class Hooks {
     @Before
     public void setUp(Scenario scenario) {
         System.out.println("Starting scenario: " + scenario.getName());
-        // Initialize driver through BaseTest but don't navigate yet
-        // Each step definition will handle specific navigation
+        // Initialize WebDriver through BaseTest
+        BaseTest.getDriver();
     }
     
     @After

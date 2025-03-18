@@ -11,12 +11,18 @@ public class BaseTest {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            WebDriver driver = new ChromeDriver();
-           
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            
+            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
-            driver.get(BASE_URL);
         }
         return driver;
+    }
+    
+    public static void navigateToBaseUrl() {
+        getDriver().get(BASE_URL);
     }
 
     public static void quitDriver() {
